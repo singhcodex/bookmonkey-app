@@ -6,5 +6,4 @@ export interface Book {
   subtitle?: string;
   thumbnailUrl?: string;
   description?: string;
-
 }

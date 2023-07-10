@@ -12,13 +12,10 @@ import { BookListItemComponent } from './book-list-item/book-list-item.component
     AppComponent,
     BookListComponent,
     BookDetailsComponent,
-    BookListItemComponent
+    BookListItemComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+  imports: [BrowserModule, AppRoutingModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
