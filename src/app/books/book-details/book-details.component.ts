@@ -15,7 +15,7 @@ export class BookDetailsComponent {
   constructor(
     private bookService: BookStoreService,
     private route: ActivatedRoute,
-  ){
+  ) {
     const isbn = this.route.snapshot.paramMap.get('isbn')!;
     this.book = this.bookService.getSingle(isbn);
   }

@@ -2,7 +2,6 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { Book } from '../../shared/book';
 import { BookStoreService } from 'src/app/shared/book-store.service';
 
-
 @Component({
   selector: 'bm-book-list',
   templateUrl: './book-list.component.html',

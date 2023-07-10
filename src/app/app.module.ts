@@ -7,10 +7,7 @@ import { BooksModule } from './books/books.module';
 import { HomeComponent } from './home/home.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HomeComponent
-  ],
+  declarations: [AppComponent, HomeComponent],
   imports: [BrowserModule, AppRoutingModule, BooksModule],
   providers: [],
   bootstrap: [AppComponent],

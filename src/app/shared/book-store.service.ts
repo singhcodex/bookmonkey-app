@@ -1,12 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Book } from './book';
 
-
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class BookStoreService {
-
   private books: Book[] = [];
 
   constructor() {
@@ -29,15 +27,14 @@ export class BookStoreService {
         thumbnailUrl: 'https://cdn.ng-buch.de/backen.png',
         description: 'Tolle Backtipps fur Mensch und Tier',
       },
-    ]
+    ];
   }
 
-
-  getAll(){
+  getAll() {
     return this.books;
   }
 
   getSingle(isbn: string): Book | undefined {
-    return this.books.find(book => book.isbn === isbn);
+    return this.books.find((book) => book.isbn === isbn);
   }
 }

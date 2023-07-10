@@ -6,20 +6,12 @@ import { BookListComponent } from './book-list/book-list.component';
 import { BookDetailsComponent } from './book-details/book-details.component';
 import { BookListItemComponent } from './book-list-item/book-list-item.component';
 
-
 @NgModule({
   declarations: [
     BookListComponent,
     BookDetailsComponent,
-    BookListItemComponent
+    BookListItemComponent,
   ],
-  imports: [
-    CommonModule,
-    BooksRoutingModule
-  ],
-  exports: [
-    BookListComponent,
-    BookDetailsComponent
-  ]
+  imports: [CommonModule, BooksRoutingModule],
 })
-export class BooksModule { }
+export class BooksModule {}
