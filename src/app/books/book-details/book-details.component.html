@@ -26,6 +26,5 @@
   <h2>Description</h2>
   <p>{{ book.description }}</p>
   <img [src]="book.thumbnailUrl" alt="Cover" />
-
-  <button class="arrow-left" (click)="doLeave()">Back to List</button>
+  <a class="button" routerLink="..">Back to List</a>
 </div>

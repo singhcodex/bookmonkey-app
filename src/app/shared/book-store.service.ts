@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Book } from './book';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -34,5 +35,9 @@ export class BookStoreService {
 
   getAll(){
     return this.books;
+  }
+
+  getSingle(isbn: string): Book | undefined {
+    return this.books.find(book => book.isbn === isbn);
   }
 }

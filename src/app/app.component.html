@@ -1,8 +1,16 @@
 <main>
-  <bm-book-list *ngIf="!book" (selectBook)="showDetails($event)"></bm-book-list>
+  <!-- <bm-book-list *ngIf="!book" (selectBook)="showDetails($event)"></bm-book-list>
   <bm-book-details
     *ngIf="book"
     (leave)="showList()"
     [book]="book"
-  ></bm-book-details>
+  ></bm-book-details> -->
+
+  <nav>
+    <a routerLink="/home">Home</a>
+    <a routerLink="/books">Books</a>
+
+  </nav>
+
+  <router-outlet></router-outlet>
 </main>
