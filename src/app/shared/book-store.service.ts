@@ -1,40 +1,29 @@
 import { Injectable } from '@angular/core';
 import { Book } from './book';
+import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
 })
 export class BookStoreService {
-  private books: Book[] = [];
 
-  constructor() {
-    this.books = [
-      {
-        isbn: '12345',
-        title: 'Tiersch gut kochen',
-        authors: ['Mrs Chimp', 'Mr Gorilla'],
-        published: '2022-06-02',
-        subtitle: 'Rezepte von Affe bis Zebra',
-        thumbnailUrl: 'https://cdn.ng-buch.de/kochen.png',
-        description: 'Immer lecker und gut',
-      },
-      {
-        isbn: '67890',
-        title: 'Backen mit Affen',
-        authors: ['Orngaton Utan'],
-        published: '2022-05-02',
-        subtitle: 'Bananenbrot und mehr',
-        thumbnailUrl: 'https://cdn.ng-buch.de/backen.png',
-        description: 'Tolle Backtipps fur Mensch und Tier',
-      },
-    ];
+  private apiUrl = 'https://api5.angular-buch.com';
+
+  constructor(private http: HttpClient) {}
+
+  getAll(): Observable<Book[]> {
+    return this.http.get<Book[]>(`${this.apiUrl}/books`);
   }
 
-  getAll() {
-    return this.books;
+  getSingle(isbn: string): Observable<Book> {
+    return this.http.get<Book>(`${this.apiUrl}/books/${isbn}`);
   }
 
-  getSingle(isbn: string): Book | undefined {
-    return this.books.find((book) => book.isbn === isbn);
+  remove(isbn: string): Observable<unknown>{
+    return this.http.delete(`${this.apiUrl}/books/${isbn}`);
   }
+  // getAllSearch(term: string): Observable<Book[]>{
+  //   return this.http.
+  // }
 }

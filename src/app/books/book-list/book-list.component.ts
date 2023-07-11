@@ -12,7 +12,9 @@ export class BookListComponent {
   @Output() selectBook = new EventEmitter<Book>();
 
   constructor(private bookService: BookStoreService) {
-    this.books = bookService.getAll();
+   this.bookService.getAll().subscribe( books => {
+    this.books = books;
+   });
   }
 
   doSelect(book: Book) {

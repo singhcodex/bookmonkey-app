@@ -27,4 +27,5 @@
   <p>{{ book.description }}</p>
   <img [src]="book.thumbnailUrl" alt="Cover" />
   <a class="button" routerLink="..">Back to List</a>
+  <button class="red" (click)="removeBook(book.isbn)">Remove Book</button>
 </div>
