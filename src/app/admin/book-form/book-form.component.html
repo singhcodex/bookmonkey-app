@@ -1,21 +1,31 @@
-<form #form="ngForm" (ngSubmit)="submitForm()">
+<form [formGroup]="form" (ngSubmit)="submitForm()">
   <label for="title">Title</label>
-  <input
-    name="title"
-    id="title"
-    [(ngModel)]="book.title" required/>
+  <input id="title" formControlName="title"/>
 
-    <label for="isbn">ISBN</label>
+  <label for="subtitle">Subtitle</label>
+  <input id="subtitle" formControlName="subtitle"/>
+
+  <label for="isbn">ISBN</label>
+  <input id="isbn" formControlName="isbn"/>
+
+  <label for="authors">Authors</label>
+  <button type="button" class="add" (click)="addAuthorControl()">+ Author</button>
+  <fieldset formArrayName="authors">
     <input
-      name="isbn"
-      id="isbn"
-      [(ngModel)]="book.isbn" required minlength="10" maxlength="13"/>
+      *ngFor="let a of authors.controls; index as i"
+      [attr.aria-label]="'Author ' + i"
+      [formControlName]="i"
+      />
+  </fieldset>
 
-      <label for="authors">Authors</label>
-      <input
-        name="Authors"
-        id="authors"
-        [(ngModel)]="book.authors[0]" required/>
+  <label for="description">Description</label>
+  <textarea id="description" formControlName="description"></textarea>
 
-        <button type="submit" [disabled]="form.invalid">Save</button>
+  <label for="published">Published</label>
+  <input id="published" formControlName="published"/>
+
+  <label for="thumbnailUrl">ThumbnailUrl</label>
+  <input type="url" id="thumbnailUrl" formControlName="thumbnailUrl">
+
+  <button type="submit" [disabled]="form.invalid">Save</button>
 </form>
