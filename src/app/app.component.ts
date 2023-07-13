@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Book } from './shared/book';
+import { AuthService } from './shared/auth.service';
 
 @Component({
   selector: 'bm-root',
@@ -9,6 +10,8 @@ import { Book } from './shared/book';
 export class AppComponent {
   title = 'bookmonkey App';
   book: Book | null = null;
+
+  constructor(public auth: AuthService){}
 
   showList() {
     this.book = null;
