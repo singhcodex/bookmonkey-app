@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Book } from 'src/app/shared/book';
 
@@ -7,9 +7,10 @@ import { Book } from 'src/app/shared/book';
   templateUrl: './book-form.component.html',
   styleUrls: ['./book-form.component.css']
 })
-export class BookFormComponent {
+export class BookFormComponent implements OnChanges {
 
   @Output() submitBook = new EventEmitter<Book>()
+  @Input() book?: Book;
 
   // book: Book = {
   //   isbn: '',
@@ -54,7 +55,37 @@ export class BookFormComponent {
       authors.map(v => new FormControl(v, {nonNullable: true}))
     )
   }
+// run on editing mode
+  ngOnChanges(): void {
+    if(this.book) {
+      this.setFormValues(this.book);
+      this.setEditMode(true);
+    }else{
+      this.setEditMode(false);
+    }
+  }
 
+  // enable edit mode
+  private setEditMode(isEditing: boolean) {
+    const isbnControl = this.form.controls.isbn;
+
+    if(isEditing){
+      isbnControl.disable();
+    }else{
+      isbnControl.enable();
+    }
+  }
+  // set form value on Edit book
+  private setFormValues(book: Book) {
+    this.form.patchValue(book);
+    this.form.setControl(
+      'authors',
+      this.buildAuthorsArray(book.authors)
+    )
+  }
+
+
+  //submit thre form here
   submitForm(){
     //this.submitBook.emit(this.book);
     const formValue = this.form.getRawValue();
