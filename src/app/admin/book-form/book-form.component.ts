@@ -1,6 +1,8 @@
-import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output, inject } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Book } from 'src/app/shared/book';
+import { atLeastOneValue, isbnFormat } from 'src/app/shared/validators';
+import { AsyncValidatorsService } from '../shared/async-validators.service';
 
 @Component({
   selector: 'bm-book-form',
@@ -28,9 +30,9 @@ export class BookFormComponent implements OnChanges {
       nonNullable: true,
       validators: [
         Validators.required,
-        Validators.minLength(10),
-        Validators.maxLength(13),
-      ]
+        isbnFormat
+      ],
+      asyncValidators: inject(AsyncValidatorsService).isbnExists()
     }),
     description: new FormControl('', {nonNullable: true }),
     published: new FormControl('', {nonNullable: true}),
@@ -49,10 +51,11 @@ export class BookFormComponent implements OnChanges {
       new FormControl('', {nonNullable: true})
     );
   }
-
+// build author array on edit mode
   private buildAuthorsArray(authors: string[]){
     return new FormArray(
-      authors.map(v => new FormControl(v, {nonNullable: true}))
+      authors.map(v => new FormControl(v, {nonNullable: true})),
+      atLeastOneValue
     )
   }
 // run on editing mode
