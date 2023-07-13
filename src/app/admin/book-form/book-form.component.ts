@@ -49,6 +49,12 @@ export class BookFormComponent {
     );
   }
 
+  private buildAuthorsArray(authors: string[]){
+    return new FormArray(
+      authors.map(v => new FormControl(v, {nonNullable: true}))
+    )
+  }
+
   submitForm(){
     //this.submitBook.emit(this.book);
     const formValue = this.form.getRawValue();
