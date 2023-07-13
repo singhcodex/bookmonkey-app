@@ -1,1 +1,21 @@
-<p>book-form works!</p>
+<form #form="ngForm" (ngSubmit)="submitForm()">
+  <label for="title">Title</label>
+  <input
+    name="title"
+    id="title"
+    [(ngModel)]="book.title" required/>
+
+    <label for="isbn">ISBN</label>
+    <input
+      name="isbn"
+      id="isbn"
+      [(ngModel)]="book.isbn" required minlength="10" maxlength="13"/>
+
+      <label for="authors">Authors</label>
+      <input
+        name="Authors"
+        id="authors"
+        [(ngModel)]="book.authors[0]" required/>
+
+        <button type="submit" [disabled]="form.invalid">Save</button>
+</form>
