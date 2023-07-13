@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Book } from '../../shared/book';
 import { BookStoreService } from 'src/app/shared/book-store.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'bm-book-details',
@@ -9,7 +10,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./book-details.component.css'],
 })
 export class BookDetailsComponent {
-  @Input() book?: Book;
+  @Input() book$: Observable<Book>;
   @Output() leave = new EventEmitter<void>();
 
   constructor(
@@ -18,9 +19,7 @@ export class BookDetailsComponent {
     private router: Router
   ) {
     const isbn = this.route.snapshot.paramMap.get('isbn')!;
-    this.bookService.getSingle(isbn).subscribe(book => {
-      this.book = book;
-    })
+    this.book$ = this.bookService.getSingle(isbn);
   }
 
   doLeave() {
