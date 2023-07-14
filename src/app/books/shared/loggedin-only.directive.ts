@@ -17,7 +17,7 @@ export class LoggedinOnlyDirective implements OnDestroy {
     private template: TemplateRef<unknown>,
     private viewContainer: ViewContainerRef,
   ) {
-    this.authService.isAuthenticated
+    this.authService.isAuthenticated$
       .pipe(takeUntil(this.destory$))
       .subscribe((isAuthenticated) => {
         if (isAuthenticated) {
