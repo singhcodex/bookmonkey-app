@@ -9,19 +9,18 @@ import { LocalIsoDateValueAccessor } from 'angular-date-value-accessor';
 import { BookEditComponent } from './book-edit/book-edit.component';
 import { FormErrorComponent } from './form-error/form-error.component';
 
-
 @NgModule({
   declarations: [
     BookFormComponent,
     BookCreateComponent,
     BookEditComponent,
-    FormErrorComponent
+    FormErrorComponent,
   ],
   imports: [
     CommonModule,
     AdminRoutingModule,
     ReactiveFormsModule,
-    LocalIsoDateValueAccessor
-  ]
+    LocalIsoDateValueAccessor,
+  ],
 })
-export class AdminModule { }
+export class AdminModule {}

@@ -19,7 +19,7 @@
 
     <div *ngIf="book.published">
       <h2>Publiched</h2>
-      {{ book.published | date:'longDate' }}
+      {{ book.published | date: "longDate" }}
     </div>
   </div>
 
@@ -28,7 +28,13 @@
   <img [src]="book.thumbnailUrl" alt="Cover" />
   <a class="button" routerLink="..">Back to List</a>
   <ng-container *bmLoggedinOnly>
-    <button class="red" bmConfirm="Do you want to remove this book?" (confirm)="removeBook(book.isbn)">Remove Book</button>
+    <button
+      class="red"
+      bmConfirm="Do you want to remove this book?"
+      (confirm)="removeBook(book.isbn)"
+    >
+      Remove Book
+    </button>
 
     <a class="button" [routerLink]="['/admin/edit', book.isbn]">Edit Book</a>
   </ng-container>

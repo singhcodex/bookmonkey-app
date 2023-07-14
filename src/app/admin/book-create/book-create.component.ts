@@ -6,19 +6,17 @@ import { BookStoreService } from 'src/app/shared/book-store.service';
 @Component({
   selector: 'bm-book-create',
   templateUrl: './book-create.component.html',
-  styleUrls: ['./book-create.component.css']
+  styleUrls: ['./book-create.component.css'],
 })
 export class BookCreateComponent {
-
   constructor(
-    private bookService:BookStoreService,
-    private router: Router
-  ){}
+    private bookService: BookStoreService,
+    private router: Router,
+  ) {}
 
-  create(book: Book){
-    this.bookService.create(book).subscribe(createdBook => {
+  create(book: Book) {
+    this.bookService.create(book).subscribe((createdBook) => {
       this.router.navigate(['/books', createdBook.isbn]);
-    })
+    });
   }
-
 }

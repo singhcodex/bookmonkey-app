@@ -1,47 +1,52 @@
 <form [formGroup]="form" (ngSubmit)="submitForm()">
   <label for="title">Title</label>
-  <input id="title" formControlName="title"/>
+  <input id="title" formControlName="title" />
 
   <bm-form-error
-   controlName="title"
-   [message]="{required: 'Title is required'}"></bm-form-error>
+    controlName="title"
+    [message]="{ required: 'Title is required' }"
+  ></bm-form-error>
 
   <label for="subtitle">Subtitle</label>
-  <input id="subtitle" formControlName="subtitle"/>
+  <input id="subtitle" formControlName="subtitle" />
 
   <label for="isbn">ISBN</label>
-  <input id="isbn" formControlName="isbn"/>
+  <input id="isbn" formControlName="isbn" />
 
   <bm-form-error
-   controlName="isbn"
-   [message]="{
-    required: 'ISBN is required',
-    isbnformat: 'ISBN must have 10 to 13 chars',
-    isbnexists: 'ISBN already exists'
-    }"></bm-form-error>
+    controlName="isbn"
+    [message]="{
+      required: 'ISBN is required',
+      isbnformat: 'ISBN must have 10 to 13 chars',
+      isbnexists: 'ISBN already exists'
+    }"
+  ></bm-form-error>
 
   <label for="authors">Authors</label>
-  <button type="button" class="add" (click)="addAuthorControl()">+ Author</button>
+  <button type="button" class="add" (click)="addAuthorControl()">
+    + Author
+  </button>
   <fieldset formArrayName="authors">
     <input
       *ngFor="let a of authors.controls; index as i"
       [attr.aria-label]="'Author ' + i"
       [formControlName]="i"
-      />
+    />
   </fieldset>
 
   <bm-form-error
-   controlName="authors"
-   [message]="{atleastonevalue: 'Al least one author required'}"></bm-form-error>
+    controlName="authors"
+    [message]="{ atleastonevalue: 'Al least one author required' }"
+  ></bm-form-error>
 
   <label for="description">Description</label>
   <textarea id="description" formControlName="description"></textarea>
 
   <label for="published">Published</label>
-  <input id="published" formControlName="published"/>
+  <input id="published" formControlName="published" />
 
   <label for="thumbnailUrl">ThumbnailUrl</label>
-  <input type="url" id="thumbnailUrl" formControlName="thumbnailUrl">
+  <input type="url" id="thumbnailUrl" formControlName="thumbnailUrl" />
 
   <button type="submit" [disabled]="form.invalid">Save</button>
 </form>

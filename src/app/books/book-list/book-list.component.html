@@ -1,10 +1,7 @@
 <h1>Books</h1>
 <ul class="book-list" *ngIf="books$ | async as books">
   <li *ngFor="let b of books">
-    <bm-book-list-item
-      [book]="b"
-      (click)="doSelect(b)"
-    ></bm-book-list-item>
+    <bm-book-list-item [book]="b" (click)="doSelect(b)"></bm-book-list-item>
   </li>
   <li *ngIf="!books.length">No Books Available!!</li>
 </ul>

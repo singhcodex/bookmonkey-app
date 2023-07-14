@@ -16,7 +16,7 @@ export class BookDetailsComponent {
   constructor(
     private bookService: BookStoreService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
   ) {
     const isbn = this.route.snapshot.paramMap.get('isbn')!;
     this.book$ = this.bookService.getSingle(isbn);
@@ -26,8 +26,7 @@ export class BookDetailsComponent {
     this.leave.emit();
   }
 
-  removeBook(isbn: string){
-
+  removeBook(isbn: string) {
     this.bookService.remove(isbn).subscribe(() => {
       this.router.navigateByUrl('/books');
     });

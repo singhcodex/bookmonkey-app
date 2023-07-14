@@ -1,31 +1,28 @@
-import { ValidatorFn, isFormArray } from "@angular/forms";
+import { ValidatorFn, isFormArray } from '@angular/forms';
 
-
-export const atLeastOneValue: ValidatorFn = function(control){
-
-  if(!isFormArray(control)){
+export const atLeastOneValue: ValidatorFn = function (control) {
+  if (!isFormArray(control)) {
     return null;
   }
 
-  if(control.controls.some(el => !!el.value)){
+  if (control.controls.some((el) => !!el.value)) {
     return null;
-  }else{
-    return {atLeastOneValue: true}
+  } else {
+    return { atLeastOneValue: true };
+  }
+};
+
+export const isbnFormat: ValidatorFn = function (control) {
+  if (!control.value || typeof control.value !== 'string') {
+    return null;
   }
 
-}
-
-export const isbnFormat: ValidatorFn = function(control){
-  if(!control.value || typeof control.value !== 'string'){
-    return null;
-  }
-
-  const isbnWithoutDashes = control.value.replace(/-/g,'');
+  const isbnWithoutDashes = control.value.replace(/-/g, '');
   const length = isbnWithoutDashes.length;
 
-  if(length === 10 || length === 13){
+  if (length === 10 || length === 13) {
     return null;
-  }else{
-    return {isbnFormat: true}
+  } else {
+    return { isbnFormat: true };
   }
-}
+};

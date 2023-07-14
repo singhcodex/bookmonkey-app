@@ -1,9 +1,11 @@
-<input type="search"
+<input
+  type="search"
   autocomplete="off"
   aria-label="Search"
   [class.loading]="isLoading"
   #searchInput
-  (input)="input$.next(searchInput.value)"/>
+  (input)="input$.next(searchInput.value)"
+/>
 
 <ul class="search-results" *ngIf="results$ | async as results">
   <li *ngFor="let book of results">

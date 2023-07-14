@@ -7,10 +7,7 @@
   ></bm-book-details> -->
 
   <nav>
-    <a
-      routerLink="/home"
-      routerLinkActive="active"
-      ariaCurrentWhenActive="page"
+    <a routerLink="/home" routerLinkActive="active" ariaCurrentWhenActive="page"
       >Home
     </a>
     <a
@@ -28,14 +25,17 @@
     </a>
 
     <div class="actions">
-      <button class="green"
-      (click)="auth.login()"
-      *ngIf="!auth.isAuthenticated">Login</button>
-      <button class="red"
-      (click)="auth.logout()"
-      *ngIf="auth.isAuthenticated">Logout</button>
+      <button
+        class="green"
+        (click)="auth.login()"
+        *ngIf="!auth.isAuthenticated"
+      >
+        Login
+      </button>
+      <button class="red" (click)="auth.logout()" *ngIf="auth.isAuthenticated">
+        Logout
+      </button>
     </div>
-
   </nav>
 
   <router-outlet></router-outlet>

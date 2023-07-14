@@ -11,7 +11,7 @@ export class AppComponent {
   title = 'bookmonkey App';
   book: Book | null = null;
 
-  constructor(public auth: AuthService){}
+  constructor(public auth: AuthService) {}
 
   showList() {
     this.book = null;
