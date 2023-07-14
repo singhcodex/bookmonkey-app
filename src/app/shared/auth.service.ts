@@ -10,7 +10,6 @@ export class AuthService {
   private _isAuthenticated$  = new BehaviorSubject(true);
   readonly isAuthenticated = this._isAuthenticated$.asObservable();
 
-  constructor() { }
 
   getAuthenticated(){
     return this._isAuthenticated$.value;
